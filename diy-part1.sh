@@ -17,6 +17,12 @@
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
+# Add istore
+echo >> feeds.conf.default
+echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+./scripts/feeds update istore
+./scripts/feeds install -d y -p istore luci-app-store
+
 # Add prepareCompile
 disablePkgsList="
 ./feeds/kenzo/luci-app-argon-config
@@ -44,3 +50,4 @@ done
 
 ./scripts/feeds update -i
 ./scripts/feeds install -a
+
